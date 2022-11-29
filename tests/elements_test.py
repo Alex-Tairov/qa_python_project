@@ -5,6 +5,7 @@ from pages.elements_page import TextBoxPage
 from pages.elements_page import CheckBoxPage
 from pages.elements_page import RadioButtonPage
 from pages.elements_page import WebTablePage
+from pages.elements_page import ButtonsPage
 
 class TestElements:
     class TestTextBox:
@@ -89,7 +90,16 @@ class TestElements:
             assert count == [5, 10, 20, 25, 50,
                              100], 'The number of rows in the table has not been changed or has changed incorrectly'
 
-
+        class TestButtonsPage:
+            def test_different_click_on_the_buttons(self, driver):
+                buttons_page = ButtonsPage(driver, 'https://demoqa.com/buttons')
+                buttons_page.open()
+                double=buttons_page.click_on_double_button()
+                right=buttons_page.click_on_right_button()
+                click=buttons_page.click_on_click_me_button()
+                assert double == "You have done a double click", "The double click button was not pressed"
+                assert right == "You have done a right click", "The right click button was not pressed"
+                assert click == "You have done a dynamic click", "The dynamic click button was not pressed"
 
 
 

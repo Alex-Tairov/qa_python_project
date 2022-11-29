@@ -22,13 +22,13 @@ class CheckBoxPageLocators:
    TITLE_ITEM=".//ancestor::span[@class='rct-text']"
    OUTPUT_RESULT=(By.CSS_SELECTOR, "span[class='text-success']")
 
-class RadioButtonPageLocators():
+class RadioButtonPageLocators:
    YES_RADIOBUTTON=(By.CSS_SELECTOR,".custom-control-label[for='yesRadio']")
    IMPRESSIVE_RADIOBUTTON=(By.CSS_SELECTOR,".custom-control-label[for='impressiveRadio']")
    NO_RADIOBUTTON=(By.CSS_SELECTOR,".custom-control-label[for='noRadio']")
    OUTPUT_RESULT=(By.CSS_SELECTOR, ".text-success")
 
-class WebPageLocators():
+class WebPageLocators:
    #add person form
    ADD_USER_BUTTON=(By.CSS_SELECTOR,"button[id='addNewRecordButton']")
    FIRST_NAME_INPUT=(By.CSS_SELECTOR,"input[id='firstName']")
@@ -49,6 +49,17 @@ class WebPageLocators():
 
    #update table
    UPDATE_BUTTON=(By.CSS_SELECTOR,".action-buttons [title='Edit']")
+
+class ButtonsPageLocators():
+   DOUBLE_CLICK_BUTTON=(By.CSS_SELECTOR,"button[id='doubleClickBtn']")
+   RIGHT_CLICK_BUTTON=(By.CSS_SELECTOR,"button[id='rightClickBtn']")
+   CLICK_ME_BUTTON=(By.XPATH,"//div[3]/button")
+
+   #result
+   SUCCESS_DOUBLE=(By.CSS_SELECTOR,"p[id='doubleClickMessage']")
+   SUCCESS_RIGHT=(By.CSS_SELECTOR,"p[id='rightClickMessage']")
+   SUCCESS_CLICK_ME=(By.CSS_SELECTOR,"p[id='dynamicClickMessage']")
+
 
 
 
