@@ -1,9 +1,9 @@
-def print_given(*args,**kwargs):
-    for i in args:
-        print(i,type(i))
+from datetime import date
 
-    for name,value in sorted(kwargs.items()):
-         print(name,value,type(kwargs[name]))
+birthday = date(1992, 10, 6)
 
-
-print_given()
+print('Название месяца:', birthday.strftime('%B'))
+print('Название дня недели:', birthday.strftime('%A'))
+print('Год:', birthday.strftime('%Y'))
+print('Месяц:', birthday.strftime('%m'))
+print('День:', birthday.strftime('%d'))
