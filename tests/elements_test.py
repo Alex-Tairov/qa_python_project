@@ -6,6 +6,7 @@ from pages.elements_page import CheckBoxPage
 from pages.elements_page import RadioButtonPage
 from pages.elements_page import WebTablePage
 from pages.elements_page import ButtonsPage
+from pages.elements_page import LinksPage
 
 class TestElements:
     class TestTextBox:
@@ -100,6 +101,20 @@ class TestElements:
                 assert double == "You have done a double click", "The double click button was not pressed"
                 assert right == "You have done a right click", "The right click button was not pressed"
                 assert click == "You have done a dynamic click", "The dynamic click button was not pressed"
+
+        class TestLinksPage:
+            def test_check_link(self,driver):
+                links_page=LinksPage(driver,'https://demoqa.com/links')
+                links_page.open()
+                response_code = links_page.check_broken_link('https://demoqa.com/bad-request')
+                assert response_code == 400, "the link works or the status code in son 400"
+
+            def test_broken_link(self,driver):
+                links_page = LinksPage(driver, 'https://demoqa.com/links')
+                links_page.open()
+                response_code = links_page.check_broken_link('https://demoqa.com/bad-request')
+                assert response_code == 400, "the link works or the status code in son 400"
+
 
 
 
