@@ -49,4 +49,8 @@ class BasePage:
         action.context_click(element)
         action.perform()
 
+    def select_handle(self,number_hundle):
+        hundle=self.driver.window_handles[number_hundle]
+        self.driver.switch_to.window(hundle)
+
 

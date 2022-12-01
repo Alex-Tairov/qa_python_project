@@ -15,7 +15,8 @@ def generated_person():
         salary=random.randint(10000,100000),
         email=faker_ru.email(),
         current_address=faker_ru.address(),
-        permanent_address=faker_ru.address()
+        permanent_address=faker_ru.address(),
+        mobile=faker_ru.msisdn(),
     )
 
 def generated_file():
