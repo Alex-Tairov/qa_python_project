@@ -1,6 +1,7 @@
 import random
 import time
-from locators.alerts_frame_windows_locators import BrowserWindowsPageLocators,AlertsPageLocators
+from locators.alerts_frame_windows_locators import BrowserWindowsPageLocators,AlertsPageLocators,FramesPageLocators,\
+    NestedFramesPageLocators
 
 from pages.base_page import BasePage
 
@@ -49,5 +50,40 @@ class AlertsPage(BasePage):
         alert_window.accept()
         text_result = self.element_is_present(self.locators.PROMPT_RESULT).text
         return text, text_result
+
+class FramesPage(BasePage):
+    locators = FramesPageLocators()
+
+    def check_frame(self, frame_num):
+        if frame_num == 'frame1':
+            frame = self.element_is_present(self.locators.FIRST_FRAME)
+            width = frame.get_attribute('width')
+            height = frame.get_attribute('height')
+            self.driver.switch_to.frame(frame)
+            text = self.element_is_present(self.locators.TITLE_FRAME).text
+            self.driver.switch_to.default_content()
+            return [text, width, height]
+        if frame_num == 'frame2':
+            frame = self.element_is_present(self.locators.SECOND_FRAME)
+            width = frame.get_attribute('width')
+            height = frame.get_attribute('height')
+            self.driver.switch_to.frame(frame)
+            text = self.element_is_present(self.locators.TITLE_FRAME).text
+            self.driver.switch_to.default_content()
+            return [text, width, height]
+
+class NestedFramesPage(BasePage):
+    locators = NestedFramesPageLocators()
+
+    def text_frame(self,locator_frame,locator_text):
+        frame = self.element_is_present(locator_frame)
+        self.driver.switch_to.frame(frame)
+        text = self.element_is_present(locator_text).text
+        return text
+
+    def check_nested_frame(self):
+        parent_text=self.text_frame(self.locators.PARENT_FRAME,self.locators.PARENT_TEXT)
+        child_text=self.text_frame(self.locators.CHILD_FRAME,self.locators.CHILD_TEXT)
+        return parent_text, child_text
 
 
