@@ -1,12 +1,13 @@
 import random
 import time
-
 from locators.interactions_page_locators import DroppablePageLocators
 from pages.base_page import BasePage
+import allure
 
 class DroppablePage(BasePage):
     locators = DroppablePageLocators()
 
+    @allure.step('drop simple')
     def drop_simple(self):
         self.element_is_visible(self.locators.SIMPLE_TAB).click()
         drag_div = self.element_is_visible(self.locators.DRAG_ME_SIMPLE)
@@ -14,6 +15,7 @@ class DroppablePage(BasePage):
         self.action_drag_and_drop_to_element(drag_div, drop_div)
         return drop_div.text
 
+    @allure.step('drop accept')
     def drop_accept(self):
         self.element_is_visible(self.locators.ACCEPT_TAB).click()
         acceptable_div = self.element_is_visible(self.locators.ACCEPTABLE)
@@ -25,6 +27,7 @@ class DroppablePage(BasePage):
         drop_text_accept = drop_div.text
         return drop_text_not_accept, drop_text_accept
 
+    @allure.step('drag revert draggable')
     def drop_revert_draggable(self, type_drag):
         drags = {
             'will':

@@ -1,5 +1,4 @@
 import random
-
 from selenium.webdriver.common.by import By
 
 class FormPageLocators:
@@ -20,5 +19,4 @@ class FormPageLocators:
     SUBMIT = (By.CSS_SELECTOR, '#submit')
 
     # table result
-
     RESULT_TABLE = (By.XPATH, '//div[@class="table-responsive"]//td[2]')
